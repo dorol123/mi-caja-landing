@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Caja — Gestión de caja chica</title>
+  <meta name="description" content="Gestioná los gastos de tu equipo, aprobá solicitudes y llevá el historial de caja desde tu celular. Sin papeles, sin confusiones." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+  <section class="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-950 to-emerald-950 flex flex-col items-center justify-center text-center px-6 overflow-hidden pb-24">
+
+    <!-- Ambient glow -->
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-500 rounded-full blur-[180px] opacity-[0.12] pointer-events-none"></div>
+
+    <!-- Nav -->
+    <nav class="absolute top-0 left-0 right-0 flex items-center justify-between px-6 sm:px-10 py-5 z-10">
+      <div class="flex items-center gap-2.5">
+        <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+          <defs>
+            <linearGradient id="nLogo" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#6ee7b7"/><stop offset="1" stop-color="#059669"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="26" fill="url(#nLogo)"/>
+          <rect width="100" height="58" rx="26" fill="white" fill-opacity="0.15"/>
+          <line x1="50" y1="18" x2="50" y2="82" stroke="white" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M50 34 C68 34 68 50 50 50" stroke="white" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+          <path d="M50 50 C32 50 32 66 50 66" stroke="white" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="text-white font-bold text-base tracking-tight">Mi Caja</span>
+      </div>
+      <a href="#descargar" class="text-sm font-semibold text-emerald-400 border border-emerald-500/30 rounded-full px-4 py-2 hover:bg-emerald-500/10 transition">
+        Descargar
+      </a>
+    </nav>
+
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-2xl mx-auto pt-16">
+
+      <!-- Logo -->
+      <div class="flex justify-center mb-8">
+        <div class="rounded-[30px] shadow-2xl shadow-black/60">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <defs>
+              <linearGradient id="hLogo" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6ee7b7"/><stop offset="1" stop-color="#059669"/>
+              </linearGradient>
+              <linearGradient id="hShine" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="white" stop-opacity="0.22"/><stop offset="1" stop-color="white" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect width="100" height="100" rx="26" fill="url(#hLogo)"/>
+            <rect width="100" height="58" rx="26" fill="url(#hShine)"/>
+            <line x1="50" y1="18" x2="50" y2="82" stroke="white" stroke-width="5.5" stroke-linecap="round"/>
+            <path d="M50 34 C68 34 68 50 50 50" stroke="white" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+            <path d="M50 50 C32 50 32 66 50 66" stroke="white" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1.5 mb-7">
+        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+        <span class="text-emerald-400 text-xs font-semibold tracking-widest uppercase">Próximamente disponible</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-5xl sm:text-6xl font-black text-white leading-[1.1] tracking-tight mb-5">
+        La caja chica de tu empresa,<br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">en orden.</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-slate-400 text-lg leading-relaxed max-w-lg mx-auto mb-10">
+        Gestioná los gastos de tu equipo, aprobá solicitudes y llevá el historial de caja desde tu celular. Sin papeles, sin confusiones.
+      </p>
+
+      <!-- Download buttons -->
+      <div id="descargar" class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="#" class="flex items-center gap-3 bg-white text-slate-900 rounded-2xl px-6 py-4 font-semibold text-sm shadow-xl w-full sm:w-auto justify-center opacity-50 cursor-not-allowed select-none">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-[10px] text-slate-500 font-normal leading-none mb-0.5">Próximamente en</div>
+            <div class="font-bold text-sm leading-none">App Store</div>
+          </div>
+        </a>
+        <a href="#" class="flex items-center gap-3 bg-white text-slate-900 rounded-2xl px-6 py-4 font-semibold text-sm shadow-xl w-full sm:w-auto justify-center opacity-50 cursor-not-allowed select-none">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M3.18 23.76c.3.17.64.22.99.14l12.4-7.17-2.58-2.57-10.81 9.6zM.94 2.04C.36 2.39 0 3.01 0 3.8v16.4c0 .79.36 1.41.94 1.76l.1.06 9.19-9.19v-.22L1.04 3.98l-.1.06zM19.55 9.45l-2.62-1.52-2.9 2.9 2.9 2.88 2.63-1.52c.75-.43.75-1.31-.01-1.74zM3.18.24l10.81 9.6 2.58-2.58L4.17.1c-.35-.2-.7-.23-1-.14z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-[10px] text-slate-500 font-normal leading-none mb-0.5">Próximamente en</div>
+            <div class="font-bold text-sm leading-none">Google Play</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="relative z-10 mt-16">
+      <div class="mx-auto w-[230px] bg-slate-900 rounded-[40px] p-2.5 shadow-2xl shadow-black/70 border border-white/5">
+        <div class="absolute top-[18px] left-1/2 -translate-x-1/2 w-16 h-5 bg-slate-900 rounded-full z-20"></div>
+        <div class="bg-gradient-to-b from-slate-950 to-emerald-950 rounded-[30px] overflow-hidden pt-7">
+          <div class="flex justify-between items-center px-5 pb-1">
+            <span class="text-white text-[9px] font-semibold">9:41</span>
+            <div class="flex gap-0.5 items-center">
+              <div class="w-4 h-2 border border-white/50 rounded-sm relative"><div class="absolute inset-0.5 right-1 bg-white/70 rounded-sm"></div></div>
+            </div>
+          </div>
+          <div class="bg-emerald-600 mx-3 mt-2 mb-2.5 rounded-2xl p-3">
+            <p class="text-emerald-200 text-[7px] mb-0.5">Bienvenido,</p>
+            <p class="text-white text-[11px] font-bold">Juan García</p>
+            <div class="mt-2 bg-white/20 rounded-xl p-2">
+              <p class="text-emerald-200 text-[7px]">Saldo disponible</p>
+              <p class="text-white text-sm font-black">$45.000,00</p>
+            </div>
+          </div>
+          <div class="px-3 space-y-1.5 pb-4">
+            <p class="text-[7px] text-slate-500 uppercase tracking-wider font-semibold mb-1.5">Mis organizaciones</p>
+            <div class="bg-white rounded-2xl p-2.5">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-slate-700 text-[8px] font-semibold">Empresa XYZ</p>
+                  <p class="text-emerald-600 text-[11px] font-black">$45.000,00</p>
+                </div>
+                <span class="text-[7px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-semibold">Admin</span>
+              </div>
+            </div>
+            <div class="bg-white rounded-2xl p-2.5">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-slate-700 text-[8px] font-semibold">Sucursal Norte</p>
+                  <p class="text-emerald-600 text-[11px] font-black">$12.500,00</p>
+                </div>
+                <span class="text-[7px] bg-slate-100 text-slate-500 px-1.5 py-0.5 rounded-full font-semibold">Usuario</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mx-auto w-40 h-6 bg-emerald-500/20 rounded-full blur-xl mt-3"></div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════ FEATURES ══════════════════════════════ -->
+  <section class="bg-slate-50 pt-24 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-emerald-600 text-xs font-bold uppercase tracking-widest text-center mb-3">Funcionalidades</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900 text-center mb-14 leading-tight">
+        Todo lo que necesitás<br class="hidden sm:block"/>para gestionar tu caja
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-3xl p-7 border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center text-2xl mb-5">🏢</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Múltiples organizaciones</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Gestioná varias cajas chicas desde una sola cuenta. Cada organización tiene su saldo, su código y su equipo.</p>
+        </div>
+        <div class="bg-white rounded-3xl p-7 border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl mb-5">📋</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Solicitudes y aprobaciones</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Los empleados envían sus gastos con foto del comprobante. El administrador aprueba o deniega en segundos.</p>
+        </div>
+        <div class="bg-white rounded-3xl p-7 border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-violet-100 rounded-2xl flex items-center justify-center text-2xl mb-5">📊</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Historial completo</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Cada aprobación, recarga y pago queda registrado. Trazabilidad total de todo lo que pasa en tu caja.</p>
+        </div>
+        <div class="bg-white rounded-3xl p-7 border border-slate-100 hover:shadow-lg transition-shadow duration-300">
+          <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center text-2xl mb-5">💸</div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Reintegros automáticos</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">El sistema lleva el saldo a reintegrar de cada empleado. Saldá con un toque cuando llegue el momento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ HOW IT WORKS ════════════════════════════ -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-xl mx-auto">
+      <p class="text-emerald-600 text-xs font-bold uppercase tracking-widest text-center mb-3">Cómo funciona</p>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900 text-center mb-14">Tres pasos y listo</h2>
+      <div class="space-y-10">
+        <div class="flex gap-5 items-start">
+          <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 shadow-lg shadow-emerald-500/30">1</div>
+          <div class="pt-1">
+            <h3 class="font-bold text-slate-900 text-lg mb-1.5">Creá tu organización</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Configurás el nombre, el monto de la caja y la frecuencia de recarga. En segundos tenés todo listo.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 items-start">
+          <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 shadow-lg shadow-emerald-500/30">2</div>
+          <div class="pt-1">
+            <h3 class="font-bold text-slate-900 text-lg mb-1.5">Invitá a tu equipo</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Compartís el código de 5 dígitos. Tus empleados se suman y pueden enviar gastos al instante.</p>
+          </div>
+        </div>
+        <div class="flex gap-5 items-start">
+          <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 shadow-lg shadow-emerald-500/30">3</div>
+          <div class="pt-1">
+            <h3 class="font-bold text-slate-900 text-lg mb-1.5">Aprobá y controlá</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Cada gasto llega con su comprobante. Vos decidís qué se aprueba, el saldo se actualiza solo y queda todo registrado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ CTA FINAL ════════════════════════════ -->
+  <section class="bg-gradient-to-b from-slate-950 to-emerald-950 py-28 px-6 text-center relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500 rounded-full blur-[160px] opacity-10 pointer-events-none"></div>
+    <div class="relative z-10 max-w-lg mx-auto">
+      <h2 class="text-4xl sm:text-5xl font-black text-white mb-5 leading-tight">¿Listo para ordenar tu caja?</h2>
+      <p class="text-slate-400 text-lg mb-12 leading-relaxed">Descargá Mi Caja cuando esté disponible y empezá a gestionar tu caja chica como nunca antes.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="#" class="flex items-center gap-3 bg-white text-slate-900 rounded-2xl px-7 py-4 font-semibold text-sm shadow-2xl w-full sm:w-auto justify-center opacity-50 cursor-not-allowed select-none">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-[10px] text-slate-500 font-normal leading-none mb-0.5">Próximamente en</div>
+            <div class="font-bold text-sm leading-none">App Store</div>
+          </div>
+        </a>
+        <a href="#" class="flex items-center gap-3 bg-white text-slate-900 rounded-2xl px-7 py-4 font-semibold text-sm shadow-2xl w-full sm:w-auto justify-center opacity-50 cursor-not-allowed select-none">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+            <path d="M3.18 23.76c.3.17.64.22.99.14l12.4-7.17-2.58-2.57-10.81 9.6zM.94 2.04C.36 2.39 0 3.01 0 3.8v16.4c0 .79.36 1.41.94 1.76l.1.06 9.19-9.19v-.22L1.04 3.98l-.1.06zM19.55 9.45l-2.62-1.52-2.9 2.9 2.9 2.88 2.63-1.52c.75-.43.75-1.31-.01-1.74zM3.18.24l10.81 9.6 2.58-2.58L4.17.1c-.35-.2-.7-.23-1-.14z"/>
+          </svg>
+          <div class="text-left">
+            <div class="text-[10px] text-slate-500 font-normal leading-none mb-0.5">Próximamente en</div>
+            <div class="font-bold text-sm leading-none">Google Play</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ════════════════════════════════ -->
+  <footer class="bg-slate-950 border-t border-white/5 py-8 px-6">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <svg width="20" height="20" viewBox="0 0 100 100" fill="none">
+          <rect width="100" height="100" rx="26" fill="#10b981"/>
+          <line x1="50" y1="18" x2="50" y2="82" stroke="white" stroke-width="5.5" stroke-linecap="round"/>
+          <path d="M50 34 C68 34 68 50 50 50" stroke="white" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+          <path d="M50 50 C32 50 32 66 50 66" stroke="white" stroke-width="5.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="text-white font-bold text-sm">Mi Caja</span>
+      </div>
+      <p class="text-slate-600 text-xs">© 2026 Mi Caja. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
